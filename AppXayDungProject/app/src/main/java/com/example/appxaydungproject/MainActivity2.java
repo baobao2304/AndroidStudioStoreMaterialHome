@@ -51,24 +51,40 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         anhXa();
         setUpSystem();
+        //        chứa ánh xạ id qua  void anhXa()
+        //                và sử lý qua setUpSystem();
     }
 //    Inherited methods
 //Public constructors
 
-    
+
 //Public methods
     private void anhXa(){
         bgapp = (ImageView) findViewById(R.id.imgviewIntro);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-
+//        Input :bgapp   (ImageView) ,
+//              tabLayout(TabLayout),
+//              viewPager(ViewPager)
+//        Output:  định nghĩa biến hiểu id của layout xml đang dùng
     }
     private void setUpSystem(){
         bgapp.animate().translationY(-2000).setDuration(800).setStartDelay(500);
-
+//        Input: bgapp (ImageView)
+//        Output: bgapp sử dụng được animation kéo từ hiện tại đến vị trí y = -2000 với thời gian 800 và thời gian bắt đầu 500
         setUpViewPager();
     }
     private void setUpViewPager(){
+//        Input : homeFragment,
+//                danhmucFragment,
+//                ,canhanFragment,
+//                viewPagerAdapter,
+//                lsItemSearch
+//        Output :         viewPagerAdapter.addFragment,
+//                         tabLayout add viewpager
+//                         tabLayout add icon
+//                         tablayout add text color,
+//                          lsItemSearch add item
         homeFragment = new BlankFragmentHome();
         danhmucFragment = new BlankFragmentDanhMuc();
         timkiemFragment = new BlankFragmentTimKiem();
