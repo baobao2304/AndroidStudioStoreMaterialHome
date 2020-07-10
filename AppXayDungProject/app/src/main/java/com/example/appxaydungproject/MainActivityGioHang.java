@@ -4,34 +4,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivitySearch extends AppCompatActivity {
-    private  ImageView backArrow;
+public class MainActivityGioHang extends AppCompatActivity {
+    private ImageView imgClose;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_search);
+        setContentView(R.layout.activity_main_gio_hang);
         anhXa();
         setUpSystem();
     }
     private void anhXa(){
-        backArrow = (ImageView) findViewById(R.id.backArrow);
+        imgClose = (ImageView) findViewById(R.id.imgClose);
     }
-    private void setUpSystem(){
-        backArrow.setColorFilter(Color.parseColor("#a8a8a8"));
-        backArrow.setOnClickListener(new View.OnClickListener() {
+    private void setUpHandleEvent(){
+        imgClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent(MainActivitySearch.this, MainActivity2.class);
-                    startActivity(intent);
-                    finish();
+                Intent intent = new Intent(MainActivityGioHang.this,MainActivity2.class);
+                startActivity(intent);
             }
         });
+    }
+    private void setUpSystem(){
+        setUpHandleEvent();
     }
 }

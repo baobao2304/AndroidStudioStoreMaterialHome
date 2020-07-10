@@ -26,6 +26,7 @@ public class BlankFragmentTimKiem extends Fragment {
     public static RecyclerView myRecyclerView;
     public static RecycleViewAdapter recyclerViewAdapter;
     private ImageView backArrow;
+    private TextView txtXoa;
     View v;
 
 
@@ -88,33 +89,37 @@ public class BlankFragmentTimKiem extends Fragment {
     }
 
     private void anhXa(){
+        txtXoa = (TextView) v.findViewById(R.id.txtXoa);
         backArrow = (ImageView) v.findViewById(R.id.backArrow);
     }
 
     private void handleClickEvent(){
+        txtXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity2.lsItemSearch.clear();
+                recyclerViewAdapter = new RecycleViewAdapter(getActivity(), MainActivity2.lsItemSearch);
+                myRecyclerView.setAdapter(recyclerViewAdapter);
+            }
+        });
+        //back with form   if home click search   return to home  and if click search in mucluc...
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TabLayout.Tab tab;
-//                tab = MainActivity2.tabLayout.getTabAt(0);
-//                tab.select();
-                System.out.println("1change page : "+MainActivity2.getChangePage());
-//                if(MainActivity2.changePage != 0){
-//                    if(MainActivity2.changePage == 1){
-//                        System.out.println("2change page"+MainActivity2.getChangePage());
-//                        MainActivity2.changePage = 0;
-//                        tab = MainActivity2.tabLayout.getTabAt(0);
-//                        tab.select();
-//
-//                    }
-//                    if(MainActivity2.changePage == 2){
-//                        System.out.println("3change page"+MainActivity2.getChangePage());
-//                        MainActivity2.changePage = 0;
-//                        tab = MainActivity2.tabLayout.getTabAt(1);
-//                        tab.select();
-//                    }
-//
-//                }
+                if(MainActivity2.changePage != 0){
+                    if(MainActivity2.changePage == 1){
+                        MainActivity2.changePage = 0;
+                        tab = MainActivity2.tabLayout.getTabAt(0);
+                        tab.select();
+                    }
+                    if(MainActivity2.changePage == 2){
+                        MainActivity2.changePage = 0;
+                        tab = MainActivity2.tabLayout.getTabAt(1);
+                        tab.select();
+                    }
+
+                }
             }
         });
     }
@@ -122,8 +127,9 @@ public class BlankFragmentTimKiem extends Fragment {
     private void handleRecycleViewItemSearch(){
         myRecyclerView = (RecyclerView) v.findViewById(R.id.contact_recycleview);
         recyclerViewAdapter = new RecycleViewAdapter(getActivity(), MainActivity2.lsItemSearch);
-
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        myRecyclerView.setHasFixedSize(true);
         myRecyclerView.setAdapter(recyclerViewAdapter);
 
     }

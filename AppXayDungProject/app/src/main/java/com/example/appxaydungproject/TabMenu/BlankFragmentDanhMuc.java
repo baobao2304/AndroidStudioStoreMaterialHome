@@ -1,17 +1,30 @@
 package com.example.appxaydungproject.TabMenu;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.example.appxaydungproject.Adapter.RecycleViewAdapter;
+import com.example.appxaydungproject.Adapter.RecycleViewAdapterTypeProduct;
 import com.example.appxaydungproject.MainActivity2;
+import com.example.appxaydungproject.MainActivityGioHang;
+import com.example.appxaydungproject.Model.ItemSearch;
+import com.example.appxaydungproject.Model.TypeProductModel;
 import com.example.appxaydungproject.R;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +33,11 @@ import com.google.android.material.tabs.TabLayout;
  */
 public class BlankFragmentDanhMuc extends Fragment {
     View v;
+    private RelativeLayout relativeLayoutSearch;
+    private ImageView imgSearch,imgStore;
+
+    private RecyclerView myRecyclerViewTypePR;
+    private RecycleViewAdapterTypeProduct recyclerViewAdapterTypePR;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,8 +76,9 @@ public class BlankFragmentDanhMuc extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        MainActivity2.setChangePage(2);
     }
-    private RelativeLayout relativeLayoutSearch;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,18 +91,70 @@ public class BlankFragmentDanhMuc extends Fragment {
 
     }
     private  void anhXa(){
+
+        //test
         relativeLayoutSearch = (RelativeLayout) v.findViewById(R.id.rlSearchBar);
+        imgSearch =  (ImageView) v.findViewById(R.id.searchBar);
+        imgStore = (ImageView) v.findViewById(R.id.imgStore);
     }
     private void handleSystem(){
+        handleEvent();
+        handleRCVTypePR();
+    }
+//
+//    private RecyclerView myRecyclerViewTypePR;
+//    private RecycleViewAdapterTypeProduct recyclerViewAdapterTypePR;
+ public List<TypeProductModel> lsItemTypeProduct;
+
+    private void handleRCVTypePR(){
+        lsItemTypeProduct = new ArrayList<>() ;
+        lsItemTypeProduct.add(new TypeProductModel("Type 1",R.drawable._1));
+        lsItemTypeProduct.add(new TypeProductModel("Type 2",R.drawable._1));
+        lsItemTypeProduct.add(new TypeProductModel("Type 3",R.drawable._1));
+        lsItemTypeProduct.add(new TypeProductModel("Type 4",R.drawable._1));
+        lsItemTypeProduct.add(new TypeProductModel("Type 5",R.drawable._1));
+        lsItemTypeProduct.add(new TypeProductModel("Type 6",R.drawable._1));
+
+
+        myRecyclerViewTypePR = (RecyclerView) v.findViewById(R.id.rcvTypePR);
+        recyclerViewAdapterTypePR = new RecycleViewAdapterTypeProduct(getActivity(),lsItemTypeProduct);
+        myRecyclerViewTypePR.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        myRecyclerViewTypePR.setHasFixedSize(true);
+        myRecyclerViewTypePR.setAdapter(recyclerViewAdapterTypePR);
+    }
+    private void handleRCVPR(){
+
+    }
+    private void handleEvent(){
         relativeLayoutSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//                TabLayout.Tab tab;
+//                tab = MainActivity2.tabLayout.getTabAt(2);
+//                tab.select();
+            }
+        });
+        imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 MainActivity2.setChangePage(2);
-                System.out.println("chuyen trang mucluc : "+MainActivity2.changePage);
+//                System.out.println("chuyen trang mucluc : "+MainActivity2.getChangePage());
+
                 TabLayout.Tab tab;
                 tab = MainActivity2.tabLayout.getTabAt(2);
                 tab.select();
             }
         });
+        imgStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity2.setChangePage(2);
+                Intent intent = new Intent(v.getContext(), MainActivityGioHang.class);
+                startActivity(intent);
+            }
+        });
     }
+
 }

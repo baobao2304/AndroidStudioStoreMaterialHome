@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
 //            @Override
 //            public void run() {
 //                Intent intent = new Intent(MainActivity.this,MainActivity2.class);
-//                startActivity(intent);
-//                finish();
+////                startActivity(intent);
+////                finish();
 //            }
 //        },10000);
 

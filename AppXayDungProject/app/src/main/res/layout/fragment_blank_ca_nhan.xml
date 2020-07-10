@@ -23,189 +23,19 @@
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="260dp"
+            android:layout_marginRight="230dp"
             android:text="Cá Nhân"/>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_local_grocery_store_24"
+            android:id="@+id/imgStore"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_outline_local_grocery_store_24"
             >
 
         </ImageView>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        >
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/_bg_circle_blue"
-
-            android:src="@drawable/ic_baseline_person_24"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="Bảo Phạm"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="bao296282@gmail.com"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="Thành viên từ 22/10/2019"/>
-        </LinearLayout>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="13dp"
-            android:src="@drawable/ic_baseline_navigate_next_24"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        >
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/_bg_circle_blue"
-
-            android:src="@drawable/ic_baseline_person_24"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="Bảo Phạm"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="bao296282@gmail.com"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="Thành viên từ 22/10/2019"/>
-        </LinearLayout>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="13dp"
-            android:src="@drawable/ic_baseline_navigate_next_24"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        >
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/_bg_circle_blue"
-
-            android:src="@drawable/ic_baseline_person_24"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="Bảo Phạm"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="bao296282@gmail.com"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="Thành viên từ 22/10/2019"/>
-        </LinearLayout>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="13dp"
-            android:src="@drawable/ic_baseline_navigate_next_24"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        >
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/_bg_circle_blue"
-
-            android:src="@drawable/ic_baseline_person_24"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="Bảo Phạm"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="bao296282@gmail.com"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:text="Thành viên từ 22/10/2019"/>
-        </LinearLayout>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="13dp"
-            android:src="@drawable/ic_baseline_navigate_next_24"/>
-    </LinearLayout>
-    <LinearLayout
+        android:id="@+id/lnUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -249,9 +79,10 @@
             android:src="@drawable/ic_baseline_navigate_next_24"/>
     </LinearLayout>
     <Button
+        android:id="@+id/btnDangXuat"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="485dp"
         android:background="@drawable/_bg_radius_solid_orange"
         android:layout_gravity="center"
         android:text="Đăng Xuất"

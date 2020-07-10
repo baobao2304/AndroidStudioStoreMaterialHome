@@ -36,6 +36,7 @@
             android:background="@color/colorWhite">
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
+                android:foreground="?attr/selectableItemBackground"
                 app:tabTextAppearance="@style/TabLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
