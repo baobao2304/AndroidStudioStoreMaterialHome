@@ -1,22 +1,55 @@
 package com.example.appxaydungproject.Model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ProductModel {
-    private int productID,categoryID,imagePR;
-    private float pricePR,PromotionPricePR,OriginalPricePR;
-    private String namePR,DescriptionPR;
-    public ProductModel(){
+    @SerializedName("Id")
+    private int productID;
+    @SerializedName("CategoryId")
+    private int categoryID;
+    @SerializedName("Image")
+    private String imgPR;
+    @SerializedName("Price")
+    private float pricePR;
+    @SerializedName("Name")
+    private String namePR;
+    @SerializedName("Description")
+    private String DescriptionPR;
+    private int imagePR;
 
+    private float PromotionPricePR;
+    private float OriginalPricePR;
+
+
+
+    public ProductModel(String imgPR){
+        this.imgPR = imgPR;
     }
-
-    public ProductModel(int productID, int categoryID, float pricePR, float promotionPricePR, float originalPricePR, String namePR, int imagePR, String descriptionPR) {
+    public ProductModel(int productID, int categoryID, float pricePR, String namePR, String imagePR, String descriptionPR) {
         this.productID = productID;
         this.categoryID = categoryID;
         this.pricePR = pricePR;
-        PromotionPricePR = promotionPricePR;
-        OriginalPricePR = originalPricePR;
         this.namePR = namePR;
-        this.imagePR = imagePR;
-        DescriptionPR = descriptionPR;
+        this.imgPR = imagePR;
+        this.DescriptionPR = descriptionPR;
+    }
+//    public ProductModel(int productID, int categoryID, float pricePR, float promotionPricePR, float originalPricePR, String namePR, int imagePR, String descriptionPR) {
+//        this.productID = productID;
+//        this.categoryID = categoryID;
+//        this.pricePR = pricePR;
+//        PromotionPricePR = promotionPricePR;
+//        OriginalPricePR = originalPricePR;
+//        this.namePR = namePR;
+//        this.imagePR = imagePR;
+//        DescriptionPR = descriptionPR;
+//    }
+
+    public String getImgPR() {
+        return imgPR;
+    }
+
+    public void setImgPR(String imgPR) {
+        this.imgPR = imgPR;
     }
 
     public int getProductID() {

@@ -7,8 +7,11 @@
     <color name="black_overlay">#66000000</color>
 
     <color name="colorWhite">#ffffff</color>
+    <color name="colorWhiteFill">#6c6c6c</color>
     <color name="colorDark">#0c0b0b</color>
     <color name="colorOrange">#e88d1d</color>
     <color name="colorRed">#fc2828</color>
     <color name="colorPink">#ed4fd2</color>
+    <color name="colorBlue">#3F51B5</color>
+    <color name="colorYellow">#FFBA00</color>
 </resources>

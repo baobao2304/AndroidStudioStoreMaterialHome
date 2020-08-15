@@ -13,20 +13,26 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
+import com.bumptech.glide.Glide;
 import com.example.appxaydungproject.Interface.ItemClickProductListener;
 import com.example.appxaydungproject.MainActivityDetailProduct;
 import com.example.appxaydungproject.Model.ProductModel;
+import com.example.appxaydungproject.ModuleHandle.LoadingImage;
 import com.example.appxaydungproject.R;
+import com.example.appxaydungproject.Retrofit.RetrofitClient;
+import com.example.appxaydungproject.SettingAll.SettingAll;
 
 import java.util.List;
 
 public class RecycleViewAdapterProduct extends RecyclerView.Adapter<RecycleViewAdapterProduct.MyViewHolder>{
     Context mContext;
     public static int id;
+
     List<ProductModel> mData;
     private  ItemClickProductListener onNotListener;
-
+    public static ProductModel productModel;
     public RecycleViewAdapterProduct(Context mContext, List<ProductModel> mData) {
         this.mContext = mContext;
         this.mData = mData;
@@ -50,11 +56,36 @@ public class RecycleViewAdapterProduct extends RecyclerView.Adapter<RecycleViewA
         holder.tv_Description.setText(mData.get(position).getDescriptionPR());
         holder.imgProduct.setImageResource(mData.get(position).getImagePR());
 
+//        LoadingImage loadingImage = new LoadingImage(holder.imgProduct);
+//        loadingImage.execute(SettingAll.Base_Url+mData.get(position).getImgPR());
+
+        CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(mContext);
+        circularProgressDrawable.setStrokeWidth(5f);
+        circularProgressDrawable.setCenterRadius(30f);
+        circularProgressDrawable.start();
+
+
+        Glide.with(mContext)
+                .load(SettingAll.Base_Url+mData.get(position).getImgPR())
+                .centerCrop()
+                .placeholder(circularProgressDrawable)
+                .into(holder.imgProduct);
+
+//        Glide.with(mContext).load(SettingAll.Base_Url+mData.get(position).getImgPR()).into(holder.imgProduct);
+
+//        Glide.with(mContext)
+//                .load(SettingAll.Base_Url+mData.get(position).getImgPR())
+//                .override(200,300)
+//                .into(holder.imgProduct);
+
+
         holder.setItemClickListener(new ItemClickProductListener() {
             @Override
             public void onClick(View view, int position) {
                 id = position;
+                productModel = mData.get(position);
                 Toast.makeText(mContext,"click 1 "+position, Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent(view.getContext(), MainActivityDetailProduct.class);
                 mContext.startActivity(intent);
             }

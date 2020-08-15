@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/black"
+    android:gravity="center"
+    tools:context=".PagerLogin.BlankFragmentLogin">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tài Khoản :"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/txtID"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+          />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mật Khẩu :"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/txtPass"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:password="true"
+            android:background="@android:color/white"
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Đăng Nhập"
+        android:background="@color/colorYellow"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+</LinearLayout>

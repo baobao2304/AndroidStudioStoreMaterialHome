@@ -111,6 +111,7 @@ public class BlankFragmentThongBao extends Fragment {
                 MainActivity2.setChangePage(3);
                 Intent intent = new Intent(getActivity(), MainActivityGioHang.class);
                 startActivity(intent);
+
             }
         });
     }

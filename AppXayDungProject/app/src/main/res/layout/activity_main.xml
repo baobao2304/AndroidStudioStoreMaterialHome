@@ -17,31 +17,28 @@
         tools:layout_editor_absoluteY="264dp">
 
         <TextView
+            android:id="@+id/txtview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Good Morning"
-            android:textColor="#FFF"
             android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mr Bao Dep Trai"
-            android:textColor="#FFF"
             android:textSize="16sp" />
+        <Button
+            android:id="@+id/btnClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="click vao day"/>
         <!--        <ImageView-->
         <!--            android:layout_height="wrap_content"-->
         <!--            android:layout_width="400dp"-->
         <!--            android:background="@drawable/ic_baseline_store_24"/>-->
     </LinearLayout>
-    <ImageView
-        android:translationY="-700dp"
-        android:id="@+id/imgviewIntro"
-        android:layout_width="match_parent"
-        android:src="@drawable/intro2"
-        android:scaleType="fitXY"
-        tools:ignore="MissingConstraints,MissingPrefix"
-        android:layout_height="950dp" />
+
 
     <LinearLayout
         android:id="@+id/lnSearch"
@@ -64,6 +61,13 @@
             android:src="@drawable/ic_baseline_search_24"
             android:layout_marginTop="-28dp"
             android:layout_marginLeft="75dp"/>
+        <ImageView
+            android:translationY="-700dp"
+            android:id="@+id/imgviewIntro"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            tools:ignore="MissingConstraints,MissingPrefix"
+            android:layout_height="950dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,15 +57,18 @@
             android:layout_marginTop="5dp"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/txtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:text="Bảo Phạm"/>
             <TextView
+                android:id="@+id/txtEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="bao296282@gmail.com"/>
             <TextView
+                android:id="@+id/txtThanhVien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
@@ -78,13 +81,84 @@
             android:layout_marginTop="13dp"
             android:src="@drawable/ic_baseline_navigate_next_24"/>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lnMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        >
+        <LinearLayout
+            android:id="@+id/lnPRBuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/_bgradius_colorgreysolid"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_outline_local_grocery_store_24_color_grey"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorDark"
+                android:text="Sản phẩm đã mua"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:src="@drawable/ic_baseline_navigate_next_24"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lnPRSee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/_bgradius_colorgreysolid"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_outline_visibility_24_colorgreysolid"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorDark"
+                android:text="Sản phẩm đã xem"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:src="@drawable/ic_baseline_navigate_next_24"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
     <Button
-        android:id="@+id/btnDangXuat"
+        android:id="@+id/btnDN"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="485dp"
-        android:background="@drawable/_bg_radius_solid_orange"
         android:layout_gravity="center"
-        android:text="Đăng Xuất"
-        />
+        android:layout_marginTop="250dp"
+        android:background="@drawable/_bg_radius_solid_orange"
+        android:text="Đăng Nhập" />
+    <Button
+        android:id="@+id/btnDX"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/_bg_radius_solid_orange"
+        android:text="Đăng Xuất" />
+
 </LinearLayout>

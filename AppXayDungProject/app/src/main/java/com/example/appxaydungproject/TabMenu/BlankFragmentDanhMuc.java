@@ -1,10 +1,11 @@
 package com.example.appxaydungproject.TabMenu;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,18 +14,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-import com.example.appxaydungproject.Adapter.RecycleViewAdapter;
+import com.example.appxaydungproject.Adapter.RecycleViewAdapterProduct;
 import com.example.appxaydungproject.Adapter.RecycleViewAdapterTypeProduct;
 import com.example.appxaydungproject.MainActivity2;
 import com.example.appxaydungproject.MainActivityGioHang;
-import com.example.appxaydungproject.Model.ItemSearch;
+import com.example.appxaydungproject.Model.ProductModel;
 import com.example.appxaydungproject.Model.TypeProductModel;
 import com.example.appxaydungproject.R;
+import com.example.appxaydungproject.Retrofit.ApiUntils;
+import com.example.appxaydungproject.Retrofit.DataClient;
+import com.example.appxaydungproject.Retrofit.RetrofitClient;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,8 +45,9 @@ public class BlankFragmentDanhMuc extends Fragment {
     private RelativeLayout relativeLayoutSearch;
     private ImageView imgSearch,imgStore;
 
-    private RecyclerView myRecyclerViewTypePR;
-    private RecycleViewAdapterTypeProduct recyclerViewAdapterTypePR;
+    public static RecyclerView myRecyclerViewTypePR,rcv_Product_PageType;
+    public static RecycleViewAdapterTypeProduct recyclerViewAdapterTypePR;
+    public static RecycleViewAdapterProduct recycleViewAdapterProduct;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -98,33 +108,27 @@ public class BlankFragmentDanhMuc extends Fragment {
         imgStore = (ImageView) v.findViewById(R.id.imgStore);
     }
     private void handleSystem(){
+//        handleRetrofitAPI();
         handleEvent();
         handleRCVTypePR();
+        handleRCVProductPageType();
     }
-//
-//    private RecyclerView myRecyclerViewTypePR;
-//    private RecycleViewAdapterTypeProduct recyclerViewAdapterTypePR;
- public List<TypeProductModel> lsItemTypeProduct;
+
 
     private void handleRCVTypePR(){
-        lsItemTypeProduct = new ArrayList<>() ;
-        lsItemTypeProduct.add(new TypeProductModel("Type 1",R.drawable._1));
-        lsItemTypeProduct.add(new TypeProductModel("Type 2",R.drawable._1));
-        lsItemTypeProduct.add(new TypeProductModel("Type 3",R.drawable._1));
-        lsItemTypeProduct.add(new TypeProductModel("Type 4",R.drawable._1));
-        lsItemTypeProduct.add(new TypeProductModel("Type 5",R.drawable._1));
-        lsItemTypeProduct.add(new TypeProductModel("Type 6",R.drawable._1));
-
 
         myRecyclerViewTypePR = (RecyclerView) v.findViewById(R.id.rcvTypePR);
-        recyclerViewAdapterTypePR = new RecycleViewAdapterTypeProduct(getActivity(),lsItemTypeProduct);
-        myRecyclerViewTypePR.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        myRecyclerViewTypePR.setHasFixedSize(true);
-        myRecyclerViewTypePR.setAdapter(recyclerViewAdapterTypePR);
+        RetrofitClient.getDataTypeProduct(v);
     }
-    private void handleRCVPR(){
+    private void handleRCVProductPageType(){
 
+
+        rcv_Product_PageType = (RecyclerView) v.findViewById(R.id.rcv_Product_PageType);
+//        recycleViewAdapterProduct = new RecycleViewAdapterProduct(getActivity(),lsItemProductPageType);
+//        rcv_Product_PageType.setLayoutManager(new GridLayoutManager(getActivity(),3));
+//
+//        rcv_Product_PageType.setHasFixedSize(true);
+//        rcv_Product_PageType.setAdapter(recycleViewAdapterProduct);
     }
     private void handleEvent(){
         relativeLayoutSearch.setOnClickListener(new View.OnClickListener() {
@@ -156,5 +160,29 @@ public class BlankFragmentDanhMuc extends Fragment {
             }
         });
     }
-
+//    private void handleRetrofitAPI() {
+//        ProgressDialog progressDoalog;
+//        progressDoalog = new ProgressDialog(v.getContext());
+//        progressDoalog.setMessage("Loading....");
+//        progressDoalog.show();
+//
+////        DataClient dataClient = ApiUntils.getDataTypeProduct();
+//        /*Create handle for the RetrofitInstance interface*/
+//        DataClient service = RetrofitClient.getClient(ApiUntils.Base_Url).create(DataClient.class);
+//        Call<List<TypeProductModel>> call = service.doGetListTypeProduct();
+//        call.enqueue(new Callback<List<TypeProductModel>>() {
+//
+//            @Override
+//            public void onResponse(Call<List<TypeProductModel>> call, Response<List<TypeProductModel>> response) {
+//                progressDoalog.dismiss();
+//                lsItemTypeProduct = response.body();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<TypeProductModel>> call, Throwable t) {
+//                progressDoalog.dismiss();
+//                Toast.makeText(v.getContext(), "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:background="@color/colorOrange"
+        android:orientation="horizontal">
+        <!--     Menu -->
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imgbackPagePR"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_arrow_back_24_white"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                />
+            <LinearLayout
+                android:id="@+id/lnSearch"
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rlSearchBar"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    >
+                    <ImageView
+                        android:id="@+id/searchBar"
+                        android:layout_width="350dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/search_layout" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/ic_baseline_search_24" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/imgStore"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_outline_local_grocery_store_24"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    <!-- content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"/>
+</LinearLayout>

@@ -1,10 +1,17 @@
 package com.example.appxaydungproject.Model;
 
-public class TypeProductModel {
-    private String typeNamePr;
-    private int imgTypeNamePr,id;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    public TypeProductModel(String typeNamePr, int imgTypeNamePr) {
+public class TypeProductModel {
+    @SerializedName("Name")
+    private String typeNamePr;
+    @SerializedName("Image")
+    private String imgTypeNamePr;
+    @SerializedName("Id")
+    private int id;
+
+    public TypeProductModel(String typeNamePr, String imgTypeNamePr) {
         this.typeNamePr = typeNamePr;
         this.imgTypeNamePr = imgTypeNamePr;
     }
@@ -31,11 +38,11 @@ public class TypeProductModel {
         this.typeNamePr = typeNamePr;
     }
 
-    public int getImgTypeNamePr() {
+    public String getImgTypeNamePr() {
         return imgTypeNamePr;
     }
 
-    public void setImgTypeNamePr(int imgTypeNamePr) {
+    public void setImgTypeNamePr(String imgTypeNamePr) {
         this.imgTypeNamePr = imgTypeNamePr;
     }
 }

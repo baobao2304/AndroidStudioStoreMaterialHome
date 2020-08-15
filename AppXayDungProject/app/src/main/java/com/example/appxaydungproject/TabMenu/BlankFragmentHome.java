@@ -1,9 +1,11 @@
 package com.example.appxaydungproject.TabMenu;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +20,7 @@ import android.widget.GridLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -27,16 +30,28 @@ import com.example.appxaydungproject.Adapter.RecycleViewAdapterProduct;
 import com.example.appxaydungproject.Adapter.RecycleViewAdapterTypeProduct;
 import com.example.appxaydungproject.MainActivity2;
 import com.example.appxaydungproject.MainActivityGioHang;
+import com.example.appxaydungproject.MainActivityProduct;
 import com.example.appxaydungproject.MainActivitySearch;
 import com.example.appxaydungproject.Model.ProductModel;
 import com.example.appxaydungproject.Model.TypeProductModel;
 import com.example.appxaydungproject.R;
+import com.example.appxaydungproject.Retrofit.ApiUntils;
+import com.example.appxaydungproject.Retrofit.DataClient;
+import com.example.appxaydungproject.Retrofit.RetrofitClient;
+import com.example.appxaydungproject.SettingAll.SettingAll;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.tabs.TabLayout;
+import com.readystatesoftware.viewbadger.BadgeView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,10 +67,10 @@ public class BlankFragmentHome extends Fragment {
     private GridLayout gridLayout;
     private int checkAnimHome = 0 ;
 
-
-
-    private RecyclerView myRecyclerViewPR;
-    private RecycleViewAdapterProduct recyclerViewAdapterPR;
+    private LinearLayout lnMucLuc,lnCaNhan,lnTimKiem,lnThongBao;
+    public static  TextView txtXemThem;
+    public static RecyclerView myRecyclerViewPR;
+    public static RecycleViewAdapterProduct recyclerViewAdapterPR;
     View v;
     private  int[] mImages = new int[]{
         R.drawable._1,R.drawable._2,R.drawable._3
@@ -121,9 +136,27 @@ public class BlankFragmentHome extends Fragment {
         searchBar = (ImageView) v.findViewById(R.id.searchBar);
         imgStore = (ImageView) v.findViewById(R.id.imgStore);
 
+        txtXemThem = (TextView) v.findViewById(R.id.txtXemThem);
+
+        this.lnMucLuc = (LinearLayout) v.findViewById(R.id.lnMucLuc);
+        this.lnCaNhan = (LinearLayout) v.findViewById(R.id.lnCaNhan);
+        this.lnThongBao = (LinearLayout) v.findViewById(R.id.lnThongBao);
+        this.lnTimKiem = (LinearLayout) v.findViewById(R.id.lnTimKiem);
+//        BadgeView badge = new BadgeView(v.getContext(), imgStore);
+//        badge.setText("1");
+//        badge.show();
+//        BadgeView
+//          BadgeView d = new BadgeDrawable(v.getContext(),imgStore);
+//
+//                badgeDrawable = tab.getOrCreateBadge();
+//        badgeDrawable.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.colorOrange));
+//        badgeDrawable.setVisible(true);
+//        badgeDrawable.setNumber(5);
+//        badgeDrawable.setMaxCharacterCount(3);
+
         imageSlider = (ImageSlider) v.findViewById(R.id.imageSlider);
 
-        hrzview = (HorizontalScrollView) v.findViewById(R.id.hrzview);
+//        hrzview = (HorizontalScrollView) v.findViewById(R.id.hrzview);
 //        ln2 = (LinearLayout) v.findViewById(R.id.ln2);
 //        gridLayout = (GridLayout) v.findViewById(R.id.gridLayout);
     }
@@ -136,28 +169,18 @@ public class BlankFragmentHome extends Fragment {
         handleRCVProduct();
 //        BadgeDrawable badgeDrawable = v.
 //        BadgeUtils.attachBadgeDrawable(badgeDrawable, 5, null);
+
+
     }
-    public List<ProductModel> lsItemProduct;
+    public static List<ProductModel> lsItemProduct = new ArrayList<>();
     private void handleRCVProduct(){
-//
-//    public ProductModel(int productID, int categoryID, float pricePR, float promotionPricePR,
-//        float originalPricePR, String namePR, int imagePR, String descriptionPR) {
-
-            lsItemProduct = new ArrayList<>() ;
-        lsItemProduct.add(new ProductModel(1,1,123,76,67567,"Name Pr 1",R.drawable._1,"sdssdfsdfsd"));
-        lsItemProduct.add(new ProductModel(2,2,123,354,3454,"Name Pr 2",R.drawable._1,"sdssdfsdfsd"));
-        lsItemProduct.add(new ProductModel(3,3,435,787,345,"Name Pr 3",R.drawable._1,"sdssdfsdfsd"));
-        lsItemProduct.add(new ProductModel(4,4,3454,788,34543,"Name Pr  4",R.drawable._1,"sdssdfsdfsd"));
-        lsItemProduct.add(new ProductModel(5,5,3454,8776,3454,"Name Pr  5",R.drawable._1,"sdssdfsdfsd"));
-        lsItemProduct.add(new ProductModel(6,6,435345,5675,435435,"Name Pr  6",R.drawable._1,"sdssdfsdfsd"));
-
 
         myRecyclerViewPR = (RecyclerView) v.findViewById(R.id.rcvPR);
-        recyclerViewAdapterPR = new RecycleViewAdapterProduct(getActivity(),lsItemProduct);
-        myRecyclerViewPR.setLayoutManager(new GridLayoutManager(getActivity(),3));
+        RetrofitClient.getDataProduct(v);
 
-        myRecyclerViewPR.setHasFixedSize(true);
-        myRecyclerViewPR.setAdapter(recyclerViewAdapterPR);
+
+        System.out.println("list đã đỗ thành công "+SettingAll.lsProductHome.size());
+
     }
     private  void handleAnimation(){
         fromBottonTop1 =  AnimationUtils.loadAnimation(v.getContext(),R.anim.anim_upafterdown);
@@ -165,14 +188,14 @@ public class BlankFragmentHome extends Fragment {
         if(checkAnimHome == 0){
             imageSlider.startAnimation(fromBottonTop1);
             lnSearch.startAnimation(fromBottonTop1);
-            hrzview.startAnimation(fromBottonTop1);
+//            hrzview.startAnimation(fromBottonTop1);
 //            gridLayout.startAnimation(fromBottonTop1);
 //            ln2.startAnimation(fromBottonTop1);
         }
         else{
             imageSlider.startAnimation(fromBottonTop2);
             lnSearch.startAnimation(fromBottonTop2);
-            hrzview.startAnimation(fromBottonTop2);
+//            hrzview.startAnimation(fromBottonTop2);
 //            gridLayout.startAnimation(fromBottonTop2);
 //            ln2.startAnimation(fromBottonTop2);
         }
@@ -197,13 +220,62 @@ public class BlankFragmentHome extends Fragment {
                 startActivity(intent);
             }
         });
+        txtXemThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TabLayout.Tab tab;
+                tab = MainActivity2.tabLayout.getTabAt(1);
+                tab.select();
+
+            }
+        });
+
+        this.lnMucLuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TabLayout.Tab tab;
+                tab = MainActivity2.tabLayout.getTabAt(1);
+                tab.select();
+            }
+        });
+
+        this.lnTimKiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                TabLayout.Tab tab;
+                tab = MainActivity2.tabLayout.getTabAt(2);
+                tab.select();
+            }
+        });
+
+        this.lnThongBao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TabLayout.Tab tab;
+                tab = MainActivity2.tabLayout.getTabAt(3);
+                tab.select();
+            }
+        });
+
+        this.lnCaNhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TabLayout.Tab tab;
+                tab = MainActivity2.tabLayout.getTabAt(4);
+                tab.select();
+            }
+        });
+
     }
     private void handleImageSlider(){
         List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel(R.drawable._1,"Image 1 ", ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable._2,"Image 1 ", ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable._3,"Image 1 ", ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable._capture1,"Thầy vinh đẹp trai :)) ", ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable._capture2,"Thầy vinh đẹp trai :)) ", ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable._capture3,"Thầy vinh đẹp trai :)) ", ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable._capture4,"Thầy vinh đẹp trai :)) ", ScaleTypes.FIT));
         imageSlider.setImageList(slideModels,ScaleTypes.FIT);
 
     }
+
 }
